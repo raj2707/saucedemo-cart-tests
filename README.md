@@ -20,6 +20,7 @@ structured with Page Object Model (POM).
 
 ## Project structure
 
+```
 pages/
 ├── login_page.py      — Login Page Object
 ├── inventory_page.py  — Inventory Page Object
@@ -28,6 +29,7 @@ pages/
 tests/
 └── test_cart.py       — Test cases
 conftest.py            — Browser fixtures
+```
 
 ## How to run
 pip install -r requirements.txt
