@@ -19,12 +19,12 @@ structured with Page Object Model (POM).
 - Product sorting (price low to high)
 
 ## Project structure
-pages/login_page.py       — Login Page Object
-pages/inventory_page.py   — Inventory Page Object
-pages/cart_page.py        — Cart Page Object
-pages/checkout_page.py    — Checkout Page Object
-tests/test_cart.py        — Test cases
-conftest.py               — Browser fixtures
+- pages/login_page.py       — Login Page Object
+- pages/inventory_page.py   — Inventory Page Object
+- pages/cart_page.py        — Cart Page Object
+- pages/checkout_page.py    — Checkout Page Object
+- tests/test_cart.py        — Test cases
+- conftest.py               — Browser fixtures
 
 ## How to run
 pip install -r requirements.txt
