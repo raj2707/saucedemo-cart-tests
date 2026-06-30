@@ -3,10 +3,10 @@ class InventoryPage:
 
     def __init__(self, page):
         self.page = page
-        self.products = page.locator('[data-test="inventory-item"]')
-        self.cart_button = page.locator('[data-test="shopping-cart-link"]')
-        self.cart_badge = page.locator('[data-test="shopping-cart-badge"]')
-        self.sort_dropdown = page.locator('[data-test="product-sort-container"]')
+        self.products = page.locator(".inventory_item")
+        self.cart_badge = page.locator(".shopping_cart_badge")
+        self.cart_button = page.locator(".shopping_cart_link")
+        self.sort_dropdown = page.locator("[data-test='product-sort-container']")
 
     def add_product_by_name(self, name):
         product = self.page.locator(f".inventory_item:has-text('{name}')")
