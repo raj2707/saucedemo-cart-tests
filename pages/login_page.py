@@ -1,14 +1,15 @@
 from playwright.sync_api import Page
 
+
 class LoginPage:
     URL = "https://www.saucedemo.com"
 
     def __init__(self, page: Page):
         self.page = page
-        self.username_input = page.get_by_role("textbox", name="Username")
-        self.password_input = page.get_by_label("Password")
-        self.login_button = page.get_by_role("button", name="Login")
-        self.error_message = page.locator("[data-test='error']")
+        self.username_input = page.get_by_test_id("username")
+        self.password_input = page.get_by_test_id("password")
+        self.login_button = page.get_by_test_id("login-button")
+        self.error_message = page.get_by_test_id("error")
 
     def navigate(self):
         self.page.goto(self.URL)
@@ -20,4 +21,3 @@ class LoginPage:
 
     def get_error_message(self):
         return self.error_message.text_content()
-    
