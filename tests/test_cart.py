@@ -70,6 +70,8 @@ def test_checkout_empty_fields(page):
 # Sorting
 def test_sort_products_price_low_to_high(page):
     inv = login(page)
+
     inv.sort_products("lohi")
-    names = inv.get_product_names()
-    assert len(names) > 0
+
+    prices = inv.get_product_prices()
+    assert prices == sorted(prices)

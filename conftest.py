@@ -1,7 +1,8 @@
-
+# conftest.py
 import os
 import pytest
 from playwright.sync_api import sync_playwright
+
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -9,7 +10,7 @@ def pytest_addoption(parser):
         action="store",
         default="chromium",
         choices=["chromium", "firefox", "webkit"],
-        help="Browser to run tests with"
+        help="Browser to run tests with",
     )
 
 
@@ -17,7 +18,10 @@ def pytest_addoption(parser):
 def page(request):
     browser_name = request.config.getoption("--browser-name")
     headless = os.getenv("CI", "false").lower() == "true"
+
     with sync_playwright() as p:
+        p.selectors.set_test_id_attribute("data-test")
+
         if browser_name == "chromium":
             browser = p.chromium.launch(headless=headless)
         elif browser_name == "firefox":
@@ -26,11 +30,9 @@ def page(request):
             browser = p.webkit.launch(headless=headless)
         else:
             raise ValueError(f"Unsupported browser: {browser_name}")
-        
-        page = browser.new_page()
 
+        page = browser.new_page()
         yield page
-        
+
         page.close()
         browser.close()
-

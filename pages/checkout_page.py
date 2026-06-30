@@ -1,19 +1,17 @@
-# pages/checkout_page.py
 class CheckoutPage:
-
     def __init__(self, page):
         self.page = page
-        # Etapa 1 — date personale
-        self.first_name = page.locator("[data-test='firstName']")
-        self.last_name  = page.locator("[data-test='lastName']")
-        self.postal     = page.locator("[data-test='postalCode']")
-        self.continue_btn = page.locator("[data-test='continue']")
-        self.error_msg  = page.locator("[data-test='error']")
-        # Etapa 2 — sumar + finalizare
-        self.finish_btn = page.locator("[data-test='finish']")
-        self.summary_total = page.locator(".summary_total_label")
-        # Confirmare
-        self.success_msg = page.locator(".complete-header")
+
+        self.first_name = page.get_by_test_id("firstName")
+        self.last_name = page.get_by_test_id("lastName")
+        self.postal = page.get_by_test_id("postalCode")
+        self.continue_btn = page.get_by_test_id("continue")
+        self.error_msg = page.get_by_test_id("error")
+
+        self.finish_btn = page.get_by_test_id("finish")
+        self.summary_total = page.get_by_test_id("total-label")
+
+        self.success_msg = page.get_by_test_id("complete-header")
 
     def fill_details(self, first, last, postal):
         self.first_name.fill(first)
